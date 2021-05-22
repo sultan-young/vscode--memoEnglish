@@ -1,0 +1,84 @@
+{
+	"name": "english-memo",
+	"displayName": "memoEnglish",
+	"description": "前端菜鸡sultan开发的一款快捷记录自己不会的单词的插件",
+	"version": "0.0.1",
+	"keywords": [
+		"sultan",
+		"memo",
+		"english"
+	],
+	"engines": {
+		"vscode": "^1.56.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:memoenglish.translationAndAppend",
+		"onCommand:memoenglish.translation"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "memoenglish.translationAndAppend",
+				"title": "翻译选中单词并添加到根目录文件"
+			},
+			{
+				"command": "memoenglish.translation",
+				"title": "翻译选中单词"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "memoenglish.translationAndAppend",
+				"key": "shift+alt+q",
+				"mac": "cmd+alt+q",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "memoenglish.translation",
+				"key": "alt+q",
+				"mac": "alt+q",
+				"when": "editorTextFocus"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorFocus",
+					"command": "memoenglish.translationAndAppend",
+					"group": "navigation"
+				}
+			],
+			"explorer/context": [
+				{
+					"when": "editorHasSelection",
+					"command": "memoenglish.translationAndAppend",
+					"group": "navigation"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.56.0",
+		"eslint": "^7.19.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	},
+	"dependencies": {
+		"axios": "^0.21.1",
+		"web-request": "^1.0.7"
+	}
+}
